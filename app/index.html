@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쓰잘데기 있는 사전 — 부산 사투리 100</title>
+<meta name="description" content="부산 사투리 100개, 원어민 발음으로 듣고 퀴즈로 풀어 보는 사전 앱. ㈜호밀밭 원작.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="쓰잘데기 있는 사전 — 부산 사투리 100">
+<meta property="og:description" content="부산말 100개, 니도 따라 해 보래이! 원어민 발음 · 퀴즈 · 해설 낭독">
+<meta property="og:image" content="https://evst-dev.github.io/homilbut-privacy/app/og.png">
+<meta property="og:url" content="https://evst-dev.github.io/homilbut-privacy/app/">
+<link rel="icon" href="icon.png">
+<style>
+  body{margin:0;background:#FFD83D;color:#111;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  main{max-width:360px;padding:32px 20px;text-align:center}
+  img{width:112px;height:112px;border-radius:26px;border:3px solid #111;box-shadow:4px 4px 0 #111}
+  h1{font-size:26px;margin:20px 0 6px}
+  p{margin:0 0 24px;font-weight:600}
+  a{display:block;margin:12px 0;padding:15px;border:3px solid #111;border-radius:16px;background:#fff;color:#111;font-size:17px;font-weight:800;text-decoration:none;box-shadow:4px 4px 0 #111}
+  a.main{background:#FF4F9A}
+</style>
+</head>
+<body>
+<main>
+  <img src="icon.png" alt="쓰잘데기 있는 사전 앱 아이콘">
+  <h1>쓰잘데기 있는 사전</h1>
+  <p>부산말 100개, 니도 따라 해 보래이!</p>
+  <a id="ios" href="https://apps.apple.com/app/id6822618600">App Store 에서 받기</a>
+  <a id="android" href="https://play.google.com/store/apps/details?id=com.homilbooks.busandict">Google Play 에서 받기</a>
+</main>
+<script>
+  // 폰 종류를 보고 맞는 스토어로 바로 넘긴다. 못 넘기면 위 버튼이 그대로 남는다.
+  (function () {
+    var ua = navigator.userAgent || '';
+    var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+    var android = /Android/i.test(ua);
+    var pkg = 'com.homilbooks.busandict';
+    if (ios) {
+      document.getElementById('ios').className = 'main';
+      location.replace('https://apps.apple.com/app/id6822618600');
+    } else if (android) {
+      document.getElementById('android').className = 'main';
+      // 카카오톡 등 앱 안 브라우저에서도 Play 스토어 앱이 열리도록 intent 주소를 쓴다.
+      location.replace('intent://details?id=' + pkg + '#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=' +
+        encodeURIComponent('https://play.google.com/store/apps/details?id=' + pkg) + ';end');
+    }
+  })();
+</script>
+</body>
+</html>
